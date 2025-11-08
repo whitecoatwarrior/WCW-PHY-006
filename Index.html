@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_06 = [
+    {
+        question: "Q1: What fundamental property allows semiconductor technology to miniaturize and enhance the reliability of electronic devices over recent decades?",
+        options: [
+            "Its intermediate electrical conductivity, enabling precise electron flow control.",
+            "Its ability to conduct electricity perfectly without any resistance.",
+            "Its complete insulation properties under all operating conditions.",
+            "Its capacity to generate electricity passively without external input."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that semiconductor technology makes devices smaller, faster, and more reliable due to its intermediate electrical conductivity, which allows for controlled electron flow, as detailed in the introduction."
+    },
+    {
+        question: "Q2: In a pure silicon crystal approaching 0 Kelvin, what is the characteristic state of its valence electrons relative to their atomic bonds?",
+        options: [
+            "They are loosely bound and readily available for conduction.",
+            "They are strongly bound to their atoms, preventing easy movement.",
+            "They exist in a state of free movement within the crystal lattice.",
+            "They have already transitioned to the conduction band, enabling current flow."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that in a silicon crystal at very low temperatures (approaching 0 Kelvin), valence electrons are strongly bound to their atoms, inhibiting electrical conduction."
+    },
+    {
+        question: "Q3: Consider an intrinsic semiconductor at 0 Kelvin. If an external electric field is applied, what is the expected outcome regarding current flow?",
+        options: [
+            "A significant current will flow due to the vacant conduction band.",
+            "A very small current will flow, primarily due to hole movement.",
+            "No current flow will occur because electrons lack the energy to cross the bandgap.",
+            "Current will flow readily as the valence band is completely occupied."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that at 0 Kelvin, the valence band is completely occupied, and the conduction band is vacant. An externally applied electric field cannot cause current flow because electrons lack the energy to cross the bandgap, thus behaving as an insulator."
+    },
+    {
+        question: "Q4: How does the number density of free electrons relate to the number density of holes in an intrinsic semiconductor where carriers are created solely by thermal excitation?",
+        options: [
+            "The number density of electrons significantly exceeds that of holes.",
+            "The number density of holes significantly exceeds that of electrons.",
+            "They are approximately equal, as each excited electron leaves a corresponding hole.",
+            "They are unrelated, as their generation mechanisms are distinct."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that in an intrinsic semiconductor, free electrons and holes are created solely by the excitation of electrons from the valence band, meaning the number density of electrons (N) equals the number density of holes (P)."
+    },
+    {
+        question: "Q5: When an intrinsic semiconductor absorbs thermal energy above 0 Kelvin, what sequential events primarily lead to its increased electrical conductivity?",
+        options: [
+            "Electrons spontaneously appear in the conduction band, then holes form in the valence band.",
+            "Covalent bonds break, generating mobile electrons in the conduction band and holes in the valence band.",
+            "Valence electrons directly gain enough energy to occupy the vacant conduction band, bypassing bond breaking.",
+            "Impurities are spontaneously created, which then contribute charge carriers to the material."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that above 0 Kelvin, thermal energy absorption leads to bond breaking, which in turn generates mobile electrons (excited into the conduction band) and holes (empty states left in the valence band), both of which participate in electrical conduction."
+    },
+    {
+        question: "Q6: What is the primary reason for choosing pentavalent or trivalent elements as dopants in semiconductor materials?",
+        options: [
+            "Their ability to form purely ionic bonds with the host atoms.",
+            "Their extremely high electrical conductivity, overriding the host material.",
+            "Their atomic size is similar to silicon or germanium, minimizing crystal distortion.",
+            "Their inherent instability at room temperature, promoting chemical reactions."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that pentavalent elements (Group V) or trivalent elements (Group III) are chosen as dopants because their atomic size is similar to silicon or germanium, allowing them to substitute host atoms without distorting the crystal structure."
+    },
+    {
+        question: "Q7: In an N-type semiconductor, which type of impurity atom contributes electrons to the conduction band without simultaneously creating holes?",
+        options: [
+            "Acceptor atoms.",
+            "Donor atoms.",
+            "Trivalent atoms.",
+            "Intrinsic atoms."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that donor atoms are impurity atoms that contribute electrons to the conduction band without creating holes, which is characteristic of N-type semiconductors formed by pentavalent impurities."
+    },
+    {
+        question: "Q8: For a P-type semiconductor, what is the immediate consequence of a trivalent impurity atom accepting an electron from the valence band?",
+        options: [
+            "It becomes a mobile positive charge, increasing current flow.",
+            "It becomes an immobile positive ion, contributing to the overall charge state.",
+            "It creates a free electron in the conduction band, increasing conductivity.",
+            "It causes a neighboring electron to instantly transition to the conduction band."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that when an acceptor (trivalent) atom accepts an electron, the impurity ion itself becomes immobile. The hole created by this acceptance, however, can move freely in the valence band."
+    },
+    {
+        question: "Q9: What is the defining characteristic of a PN junction diode's behavior that makes it useful in rectifier circuits?",
+        options: [
+            "Its ability to conduct current equally well in both directions.",
+            "Its property of allowing current flow primarily in only one direction.",
+            "Its capacity to block all current flow regardless of applied voltage.",
+            "Its function as a voltage amplifier for very small signals."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that the key property of a PN junction is rectification, which means it allows current flow primarily in one direction, making it suitable for converting AC to DC."
+    },
+    {
+        question: "Q10: During the formation of a PN junction, what is the direct cause of the creation of negative ions on the P-side and positive ions on the N-side?",
+        options: [
+            "External voltage application across the junction.",
+            "Thermal energy exciting electrons and holes across the entire material.",
+            "Electrons from the N-type region diffusing into the P-type region and filling holes.",
+            "Holes from the P-type region moving into the N-type region and combining with electrons."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that during PN junction formation, electrons from the N-type region diffuse into the P-type region and fill holes. This diffusion leaves behind positive immobile ions on the N-side and creates negative immobile ions on the P-side."
+    },
+    {
+        question: "Q11: How does a forward bias across a PN junction diode impact its potential barrier and the resulting majority carrier current flow?",
+        options: [
+            "It increases the potential barrier, thereby reducing majority carrier current.",
+            "It decreases the potential barrier, allowing majority carriers to cross more easily.",
+            "It has no effect on the potential barrier, only on minority carrier flow.",
+            "It reverses the direction of the electric field within the depletion region, blocking all flow."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that under forward bias, the external voltage opposes the built-in potential barrier, causing it to decrease. When the external voltage exceeds the knee voltage, majority carriers overcome the barrier, leading to a rapid increase in forward current."
+    },
+    {
+        question: "Q12: In a reverse-biased PN junction, what is the primary source of the very small current that still flows?",
+        options: [
+            "Diffusion of majority carriers across the widened depletion region.",
+            "Electrons being forced from the valence band into the conduction band by the external voltage.",
+            "Drift of minority carriers generated by the breaking of covalent bonds.",
+            "Holes being injected from the external circuit into the depletion region."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that under reverse bias, no majority carriers cross the junction. A very small current flows due to the minority carriers, which are generated by the breaking of covalent bonds and are swept across the junction by the electric field."
+    },
+    {
+        question: "Q13: What is the conceptual significance of the 'knee voltage' in the forward bias IV characteristics of a PN junction diode?",
+        options: [
+            "It represents the maximum reverse voltage the diode can withstand before breakdown.",
+            "It indicates the voltage at which the diode's resistance becomes infinitely large.",
+            "It signifies the point at which forward current begins to increase rapidly as the barrier is overcome.",
+            "It is the voltage at which the diode transitions from a conductor to an insulator."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that the knee voltage (or threshold voltage) is the voltage at which the forward current starts to increase rapidly, indicating that majority carriers have gained sufficient energy to overcome the potential barrier."
+    },
+    {
+        question: "Q14: What is the primary mechanism of operation for a Light-Emitting Diode (LED)?",
+        options: [
+            "Absorption of photons to generate an electrical current.",
+            "Conversion of thermal energy into light through a resistive element.",
+            "Recombination of electrons with holes, releasing energy as photons.",
+            "Amplification of an input current through a three-region semiconductor."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that in a Light-Emitting Diode (LED), electrons recombine with holes, releasing energy in the form of photons, producing light. It operates under forward bias."
+    },
+    {
+        question: "Q15: What distinguishes a photodiode's typical operating condition from an LED's, despite both being PN junctions?",
+        options: [
+            "Photodiodes operate under forward bias to emit light, while LEDs operate under reverse bias to detect it.",
+            "Photodiodes convert light into current under reverse bias, while LEDs emit light under forward bias.",
+            "Photodiodes are always heavily doped, whereas LEDs are always lightly doped.",
+            "Photodiodes function only at extremely low temperatures, while LEDs require high temperatures."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that an LED is a heavily doped PN junction operated under forward bias, emitting light. A photodiode is a PN junction diode typically operated under reverse bias, converting light into an electrical current when photons are absorbed."
+    },
+    {
+        question: "Q16: Which type of rectifier circuit utilizes only one half-cycle of the AC input voltage to produce a pulsating DC output?",
+        options: [
+            "A full-wave bridge rectifier.",
+            "A half-wave rectifier.",
+            "A full-wave center-tap rectifier.",
+            "A voltage doubler circuit."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that a half-wave rectifier rectifies only one half-cycle of the AC input, producing a pulsating DC current that is present only for half of the input cycle."
+    },
+    {
+        question: "Q17: The science of controlling the flow of electrons or other electrically charged particles, primarily through non-metal conductors, is known as what?",
+        options: [
+            "Thermodynamics.",
+            "Electronics.",
+            "Quantum mechanics.",
+            "Optics."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that Electronics is defined as the science of controlling the flow of electrons or other electrically charged particles, primarily through non-metal conductors (semiconductors)."
+    },
+    {
+        question: "Q18: What is an intrinsic semiconductor defined as?",
+        options: [
+            "A semiconductor crystal that has been heavily doped with impurities.",
+            "A perfect, pure semiconductor crystal containing no impurities.",
+            "A material with very high electrical conductivity, similar to metals.",
+            "A material that conducts electricity only when light is shone upon it."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that an Intrinsic Semiconductor is defined as a perfect, pure semiconductor crystal containing no impurities, with purity meaning less than one impurity atom per million host atoms."
+    },
+    {
+        question: "Q19: At 0 Kelvin, what is the energy band configuration of a semiconductor regarding its valence and conduction bands?",
+        options: [
+            "Both the valence and conduction bands are partially occupied.",
+            "The valence band is completely occupied, and the conduction band is vacant.",
+            "The conduction band is completely occupied, and the valence band is vacant.",
+            "Both bands are entirely vacant, preventing any electron movement."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that at 0 Kelvin, electrons fully occupy the valence band, and the conduction band is vacant, which is why a semiconductor behaves as an insulator at this temperature."
+    },
+    {
+        question: "Q20: What is the process of adding a small amount of impurity to an intrinsic semiconductor crystal to significantly increase its conductivity called?",
+        options: [
+            "Annealing.",
+            "Etching.",
+            "Doping.",
+            "Sintering."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Doping is the process of adding a small amount of impurity to an intrinsic semiconductor crystal to significantly increase its conductivity."
+    },
+    {
+        question: "Q21: Which type of semiconductor forms when a pure semiconductor is doped with a pentavalent impurity?",
+        options: [
+            "P-type semiconductor.",
+            "Intrinsic semiconductor.",
+            "N-type semiconductor.",
+            "Insulating semiconductor."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that an N-type semiconductor is formed by doping a pure semiconductor with a pentavalent impurity, such as Phosphorus or Arsenic."
+    },
+    {
+        question: "Q22: What is the primary characteristic of acceptor atoms in a P-type semiconductor?",
+        options: [
+            "They contribute free electrons to the conduction band.",
+            "They accept electrons from the valence band, thereby producing holes.",
+            "They become mobile negative ions within the crystal lattice.",
+            "They significantly increase the number of minority carriers."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that acceptor atoms are impurity atoms that accept electrons from the valence band, thereby producing holes without simultaneously generating electrons in the conduction band."
+    },
+    {
+        question: "Q23: What describes the region at the junction of a PN diode that is free of mobile charges?",
+        options: [
+            "The conductive channel.",
+            "The ohmic contact.",
+            "The depletion region.",
+            "The intrinsic zone."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that the region at the junction that is free of mobile charges is called the depletion region or layer."
+    },
+    {
+        question: "Q24: How does connecting the P-type region to the negative terminal and the N-type to the positive terminal of an external source affect a PN junction?",
+        options: [
+            "It forward biases the junction, decreasing the potential barrier.",
+            "It reverse biases the junction, increasing the potential barrier.",
+            "It creates an ohmic contact, allowing free flow in both directions.",
+            "It causes the diode to emit light, regardless of its material."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that connecting the P-type region to the negative terminal and the N-type to the positive terminal constitutes reverse bias, which adds to the built-in potential barrier, increasing its height."
+    },
+    {
+        question: "Q25: What is the purpose of transformer coupling often used in rectifier circuits?",
+        options: [
+            "To convert DC voltage into AC voltage.",
+            "To amplify the output current without altering voltage.",
+            "To step up or step down AC voltage and provide electrical isolation.",
+            "To smooth out the pulsating DC output waveform."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that transformer coupling is often used in rectifier circuits to step up or step down AC voltage and provide electrical isolation."
+    },
+    {
+        question: "Q26: If the bandgap energy of a semiconductor material were substantially larger, how would its intrinsic conductivity at a fixed non-zero temperature be affected, and why?",
+        options: [
+            "It would increase, as more electrons would be available in the valence band.",
+            "It would decrease, because fewer electrons would possess enough energy to cross into the conduction band.",
+            "It would remain unchanged, as bandgap energy only impacts extrinsic conductivity.",
+            "It would fluctuate unpredictably due to increased thermal instability."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that the bandgap energy (E_g) is the minimum energy required to excite an electron from the valence band to the conduction band. If this energy requirement were larger, fewer electrons would gain sufficient thermal energy to cross the barrier at a given temperature, thus decreasing the number of free carriers and consequently the intrinsic conductivity."
+    },
+    {
+        question: "Q27: An intrinsic semiconductor exhibits a property where valence electrons from neighboring atoms can fill a vacated electron position, effectively moving the empty state. What is this phenomenon primarily responsible for?",
+        options: [
+            "Creating an N-type region without doping.",
+            "The generation of immobile acceptor ions.",
+            "The participation of holes in electrical conduction.",
+            "Reducing the overall bandgap energy of the material."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that when a bond breaks and creates a hole, a valence electron from a neighboring atom can fill the hole, effectively moving the hole in the opposite direction to electron movement. This mechanism allows holes to participate in electrical conduction."
+    },
+    {
+        question: "Q28: Consider an N-type semiconductor at an extremely low temperature, then gradually heated to ordinary room temperature. Describe the sequential primary mechanisms by which conduction electrons become available.",
+        options: [
+            "First, intrinsic generation creates electron-hole pairs, then donor atoms ionize.",
+            "First, donor atoms ionize contributing electrons, then intrinsic generation creates additional electron-hole pairs.",
+            "Only intrinsic generation occurs, as donor atoms remain un-ionized at all temperatures.",
+            "Electrons spontaneously populate the conduction band without any specific mechanism."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that in an N-type semiconductor, at very low temperatures, donor atoms are not ionized. At slightly higher temperatures, donor electrons populate the conduction band. At ordinary temperatures, some electrons from the valence band are also excited (intrinsic process), adding to the conduction electrons. Therefore, donor ionization precedes significant intrinsic generation."
+    },
+    {
+        question: "Q29: If a trivalent dopant atom were introduced into a semiconductor with an atomic size significantly larger than the host atoms, what structural consequence would primarily arise, impacting its intended electrical function?",
+        options: [
+            "It would enhance electron mobility due to increased lattice vibrations.",
+            "It would create additional donor states, forming an N-type material.",
+            "It would distort the crystal structure, potentially hindering effective doping and carrier movement.",
+            "It would lead to the spontaneous generation of more electron-hole pairs at lower temperatures."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that dopants are chosen because their atomic size is similar to silicon or germanium, allowing them to substitute host atoms without distorting the crystal structure. A significant size mismatch would lead to crystal distortion, which could impede the desired electrical effects of doping by disrupting the regular arrangement necessary for efficient carrier transport."
+    },
+    {
+        question: "Q30: During the formation of a PN junction, what stops the continuous diffusion of majority carriers across the junction?",
+        options: [
+            "The depletion region collapsing due to external pressure.",
+            "The creation of a reverse bias voltage across the entire structure.",
+            "The formation of an electric field from N-type to P-type, which acts as a potential barrier.",
+            "The spontaneous recombination of all free electrons and holes at the junction interface."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that as electrons diffuse from N to P and holes from P to N, they create immobile ions. This charge separation forms an electric field directed from N-type to P-type, which stops further diffusion of majority carriers by creating a potential barrier."
+    },
+    {
+        question: "Q31: Consider a PN junction under increasing forward bias. What is the relationship between the external voltage and the built-in potential barrier, and how does this affect current flow after a certain threshold?",
+        options: [
+            "External voltage reinforces the barrier, decreasing current flow.",
+            "External voltage opposes the barrier, causing current to rise sharply once the barrier is overcome.",
+            "External voltage creates a new barrier in opposition to the original, leading to constant current.",
+            "External voltage has no interaction with the built-in barrier, only affecting carrier generation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that under forward bias, the external voltage opposes the built-in potential barrier, causing it to decrease. When the external voltage exceeds the knee voltage (threshold), majority carriers overcome the barrier, leading to a rapid increase in forward current."
+    },
+    {
+        question: "Q32: In a reverse-biased PN junction, what effect does the widening of the depletion layer have on the passage of majority carriers, and conversely, what does the internal electric field do to minority carriers?",
+        options: [
+            "Widening enhances majority carrier flow; the electric field blocks minority carriers.",
+            "Widening impedes majority carrier flow; the electric field promotes minority carrier flow.",
+            "Widening allows for minority carrier generation; the electric field neutralizes majority carriers.",
+            "Widening has no impact on carriers; the electric field only maintains charge neutrality."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that reverse bias increases the potential barrier and widens the depletion layer, preventing majority carriers from crossing. Conversely, the electric field across the junction, while preventing majority carrier diffusion, promotes the flow of minority carriers, sweeping them across the junction."
+    },
+    {
+        question: "Q33: How does the phenomenon of Zener breakdown fundamentally differ from Avalanche breakdown in a reverse-biased PN junction regarding the initial cause of current increase?",
+        options: [
+            "Zener breakdown involves thermal runaway, while Avalanche involves intrinsic carrier generation.",
+            "Zener breakdown is due to minority carrier recombination, while Avalanche is due to majority carrier injection.",
+            "Zener breakdown is primarily caused by direct breaking of covalent bonds, while Avalanche involves high-velocity minority carrier collisions.",
+            "Zener breakdown occurs only in forward bias, while Avalanche occurs in reverse bias."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Zener breakdown occurs when a significant reverse voltage directly breaks covalent bonds, releasing a large number of electrons. Avalanche breakdown, on the other hand, involves high-velocity minority carriers colliding with bound electrons and knocking them out, creating a cascade effect."
+    },
+    {
+        question: "Q34: A solar cell primarily converts light energy into what other form of energy directly, utilizing a specific physical and chemical phenomenon?",
+        options: [
+            "Thermal energy via light absorption.",
+            "Mechanical energy through expansion.",
+            "Electrical energy via the photovoltaic effect.",
+            "Chemical energy through photolysis."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that a solar cell converts light energy directly into electricity via the photovoltaic effect, which is a physical and chemical phenomenon."
+    },
+    {
+        question: "Q35: If a half-wave rectifier circuit is supplied with an AC input, what will be the qualitative nature of the current flowing through its load resistor during the negative half-cycle of the input?",
+        options: [
+            "A significant current in the forward direction.",
+            "A significant current in the reverse direction.",
+            "Essentially no current flow.",
+            "A constant DC current, independent of the input cycle."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that in a half-wave rectifier, during the negative half-cycle, the diode is reverse biased. This effectively blocks current flow, resulting in essentially no current flowing through the load during this period."
+    },
+    {
+        question: "Q36: What is a key disadvantage of a full-wave rectifier utilizing a center-tap transformer compared to other rectifier configurations?",
+        options: [
+            "It only rectifies one half-cycle of the AC input.",
+            "It requires a center-tapped transformer, which can be larger and more complex.",
+            "It produces a highly discontinuous DC output waveform.",
+            "It is unsuitable for high-power applications due to excessive heat generation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that a disadvantage of the center-tap full-wave rectifier is that it requires a center-tapped transformer, which can be larger and more complex compared to other rectifier designs."
+    },
+    {
+        question: "Q37: Imagine an intrinsic semiconductor where, hypothetically, the thermal energy at room temperature was insufficient to break *any* covalent bonds. What would be the primary electrical characteristic of this material?",
+        options: [
+            "It would behave as a perfect conductor due to excess free electrons.",
+            "It would act as an ideal insulator, similar to its behavior at 0 Kelvin.",
+            "It would spontaneously become a P-type semiconductor.",
+            "Its conductivity would be highly variable and unstable."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that above 0 Kelvin, thermal energy absorption leads to bond breaking, which creates mobile electrons and holes, thus enabling conduction. If no bonds could be broken, then like at 0K, there would be no free carriers, and it would behave as an insulator."
+    },
+    {
+        question: "Q38: If the number of impurity atoms in an N-type semiconductor is vastly increased, what would be the primary effect on the minority carrier concentration relative to an intrinsic semiconductor at the same temperature?",
+        options: [
+            "Minority carrier concentration would significantly increase.",
+            "Minority carrier concentration would remain identical.",
+            "Minority carrier concentration would slightly decrease due to increased recombination.",
+            "Minority carrier concentration would become the dominant conduction mechanism."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that in an N-type semiconductor, electrons are the majority carriers and holes are the minority carriers. While the text doesn't explicitly state the effect of increased doping on minority carriers, a higher concentration of majority carriers generally leads to increased recombination with minority carriers, slightly reducing their equilibrium concentration compared to an intrinsic state, assuming the intrinsic generation rate remains constant. The question asks for the primary effect relative to an intrinsic semiconductor, where N=P is higher than the minority carrier concentration in the doped material."
+    },
+    {
+        question: "Q39: Consider a hypothetical scenario where an N-type region is created with a pentavalent dopant that, unusually, also has a significantly lower atomic size than the host silicon. What direct challenge would this primarily pose to the N-type formation and its intended functionality?",
+        options: [
+            "It would enhance the creation of acceptor states instead of donor states.",
+            "It would lead to significant distortion of the crystal structure, impeding efficient electron contribution and mobility.",
+            "It would cause the material to spontaneously transition into a P-type semiconductor.",
+            "It would result in a material that is highly insulating rather than conductive."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that dopants are chosen because their atomic size is similar to silicon or germanium to avoid distorting the crystal structure. A significantly lower atomic size would lead to crystal lattice distortion, making it difficult for the dopant to properly substitute host atoms and for the free electrons to move efficiently, thus hindering the intended N-type functionality and electron contribution."
+    },
+    {
+        question: "Q40: If the concentration of dopant impurities in both the P and N regions of a PN junction were significantly reduced while maintaining a junction, how would this primarily affect the width of the depletion layer?",
+        options: [
+            "The depletion layer would become narrower due to increased carrier diffusion.",
+            "The depletion layer would remain unchanged as it's independent of doping.",
+            "The depletion layer would become wider due to fewer available fixed ions to balance charges over a given distance.",
+            "The depletion layer would completely disappear, turning the junction into a simple conductor."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that the width of the depletion region depends on carrier concentration. A lower doping concentration means fewer immobile ions are available per unit volume to create the electric field and balance the charges. To achieve the necessary charge balance, the depletion region would need to extend over a wider physical distance, thus becoming wider."
+    },
+    {
+        question: "Q41: A PN junction is constructed such that the P-type side has a much lower concentration of impurities than the N-type side. If this junction is then forward-biased, what would be the primary implication for the hole current injection into the N-side compared to electron current injection into the P-side?",
+        options: [
+            "Hole injection would be significantly greater than electron injection.",
+            "Electron injection would be significantly greater than hole injection.",
+            "Both hole and electron injections would be equally small.",
+            "Neither hole nor electron injection would occur, regardless of bias."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that under forward bias, majority carriers cross the junction. If the P-side has a much lower concentration of impurities (meaning fewer holes), while the N-side has a higher concentration of impurities (meaning more electrons), then the electron current from the N-side into the P-side would be significantly greater than the hole current from the P-side into the N-side, as the availability of carriers dictates the magnitude of injected current."
+    },
+    {
+        question: "Q42: Consider a reverse-biased PN junction designed to operate reliably in its breakdown region. Which specific breakdown effect is it primarily engineered to utilize for stable voltage regulation?",
+        options: [
+            "Thermal runaway breakdown.",
+            "Avalanche breakdown, for its destructive nature.",
+            "Zener breakdown, due to its bond-breaking mechanism.",
+            "Forward current breakdown."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that Zener diodes are designed to operate in the reverse breakdown regions, specifically mentioning the Zener effect where covalent bonds break, leading to a sudden increase in reverse current. This characteristic is used for voltage regulation."
+    },
+    {
+        question: "Q43: If a Photodiode, typically operated under reverse bias, were instead forward biased, what would be its primary functional alteration regarding light detection and energy conversion?",
+        options: [
+            "It would start emitting light, similar to an LED, instead of detecting it.",
+            "Its ability to convert light into electrical current would be significantly enhanced.",
+            "It would function as a highly efficient solar cell, generating power.",
+            "It would become an ideal insulator, blocking all current flow."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory State that a photodiode converts light into current and is typically operated under reverse bias. An LED, which emits light, is a heavily doped PN junction operated under forward bias. If a photodiode (a PN junction) were forward biased, it would likely exhibit properties similar to an LED, including the recombination of electrons and holes and the emission of photons, thus shifting its primary function from light detection to light emission."
+    },
+    {
+        question: "Q44: In a half-wave rectifier, the Peak Inverse Voltage (PIV) is equal to the peak input voltage. If the input AC voltage's peak value were to double, how would this impact the required voltage rating for the rectifying diode?",
+        options: [
+            "The required rating would decrease by half.",
+            "The required rating would remain unchanged.",
+            "The required rating would also need to double.",
+            "The required rating would become irrelevant due to increased current."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that in a half-wave rectifier, the PIV (Peak Inverse Voltage) is equal to the peak input voltage (V_max). Therefore, if the peak input voltage doubles, the diode must be able to withstand double the reverse voltage, meaning its voltage rating would also need to double."
+    },
+    {
+        question: "Q45: A full-wave center-tap rectifier uses two diodes. How do these diodes primarily operate during the two half-cycles of the AC input to produce a continuous DC output?",
+        options: [
+            "Both diodes conduct simultaneously during both half-cycles.",
+            "One diode conducts during the positive half-cycle, and the other conducts during the negative half-cycle.",
+            "Both diodes are reverse biased during one half-cycle and forward biased during the other.",
+            "The diodes only conduct during the peak voltage instances of the AC input."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that in a full-wave center-tap rectifier, diodes operate in alternate switching mode. During one half-cycle, one diode is forward biased and conducts, and during the other half-cycle, the second diode is forward biased and conducts. This ensures current flows through the load in the same direction during both half-cycles."
+    },
+    {
+        question: "Q46: If a PN junction's material had an exceptionally high bandgap energy, making it a poor intrinsic conductor even at high temperatures, how would this fundamentally affect its utility as an LED emitter?",
+        options: [
+            "It would become an exceptionally bright LED due to higher energy photon emission.",
+            "Its efficiency as an LED would be severely reduced due to difficulty in achieving electron-hole recombination.",
+            "It would function primarily as a photodiode rather than an LED.",
+            "The forward bias voltage required for light emission would decrease significantly."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that an LED relies on electrons recombining with holes to release energy as photons. If the bandgap energy is exceptionally high, it requires a much greater energy input (higher forward bias) to inject enough electrons and holes across the junction to facilitate recombination effectively. This difficulty in achieving sufficient carrier injection and subsequent recombination would severely reduce its efficiency as an LED emitter."
+    },
+    {
+        question: "Q47: Consider a hypothetical scenario where doping with trivalent impurities results in the creation of holes, but these holes are, for an unknown reason, completely immobile within the valence band. What would be the primary consequence for the electrical characteristics of this material?",
+        options: [
+            "It would become an N-type semiconductor with enhanced electron conductivity.",
+            "It would remain an intrinsic semiconductor, as holes would not contribute to conduction.",
+            "It would effectively behave as an insulator, as neither electrons nor holes would be mobile.",
+            "It would exhibit metallic conductivity due to a high concentration of immobile charges."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory State that holes participate in electrical conduction through their movement in the valence band (as neighboring electrons fill them). If holes were completely immobile, they could not contribute to current flow. Assuming intrinsic electrons are also negligible at low temperatures (before significant thermal generation), the material would essentially lack mobile charge carriers, thus behaving as an insulator despite the presence of holes."
+    },
+    {
+        question: "Q48: What primary effect would occur if a semiconductor's bandgap energy could be continuously modulated to become extremely narrow, approaching zero, without changing its crystal structure?",
+        options: [
+            "It would become an ideal insulator at all temperatures.",
+            "It would transition from semiconductor behavior to metallic conductor behavior.",
+            "It would function primarily as a photodiode, highly sensitive to light.",
+            "It would exhibit superconductivity at room temperature."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory defines the bandgap as the energy difference separating the valence band from the conduction band. If this bandgap became extremely narrow, essentially zero, the distinction between the valence and conduction bands would disappear. Electrons would be able to move freely between bands with minimal energy input, characteristic of a metallic conductor rather than a semiconductor or insulator."
+    },
+    {
+        question: "Q49: Imagine a rectification circuit where the diodes have an unusually high knee voltage. What practical consequence would this primarily have on the overall efficiency of the rectifier for a given input AC voltage?",
+        options: [
+            "It would increase the output DC voltage significantly.",
+            "It would decrease the average output DC voltage and reduce efficiency.",
+            "It would have no impact on efficiency, only on the maximum current.",
+            "It would cause the circuit to only rectify negative half-cycles."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory State that current in a forward-biased diode starts to increase rapidly only after the external voltage exceeds the knee voltage. If the knee voltage is unusually high, a larger portion of the input AC voltage cycle would be spent overcoming this barrier before significant conduction occurs. This means less voltage is available across the load for the same input, leading to a lower average output DC voltage and consequently reducing the overall rectification efficiency."
+    },
+    {
+        question: "Q50: Consider a PN junction in thermal equilibrium (no external bias). What is the primary and direct relationship between the rate of majority carrier diffusion across the junction and the rate of minority carrier drift across the junction?",
+        options: [
+            "The diffusion rate significantly exceeds the drift rate.",
+            "The drift rate significantly exceeds the diffusion rate.",
+            "They are approximately equal, maintaining dynamic equilibrium.",
+            "They are unrelated, as diffusion only occurs under forward bias."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory describes how majority carriers diffuse across the junction, creating an electric field. This field then opposes further majority carrier diffusion but promotes minority carrier drift. In thermal equilibrium (no external bias), these two opposing processes (majority carrier diffusion and minority carrier drift) must balance each other out to maintain a stable potential barrier and zero net current. Thus, their rates are approximately equal."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-06';
+let quizData = quizData_WCW_PHY_06;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-06', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-06', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-06', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_06;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_06;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_06[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_06.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
